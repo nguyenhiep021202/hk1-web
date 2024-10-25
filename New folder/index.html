@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thông Tin Đăng Nhập</title>
+    <style>
+        * {
+            margin: 0px auto;
+            padding: 0px;
+        }
+        
+        .wrapper {
+            width: 789px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form>
+            <input type="text" id="txtus" placeholder="User name"><br>
+            <input type="password" id="txtmk" placeholder="Password"><br>
+            <input type="radio" name="gt" value="Nam">Nam
+            <input type="radio" name="gt" value="Nữ">Nữ<br>
+            <input type="checkbox" value="Trung Nguyen">Trung Nguyen<br>
+            <input type="checkbox" value="MeKong"> MeKong<br>
+            <input type="checkbox" value="New Blue"> New Blue<br>
+            <input type="checkbox" value="Trà sữa"> Trà sữa<br>
+            <input type="button" value="Nhập" onclick="Nhap()"><br>
+        </form>
+    </div>
+
+    <script>
+        function Nhap() {
+            // Lấy giá trị từ các trường nhập liệu
+            var tendn = document.getElementById("txtus").value;
+            var mk = document.getElementById("txtmk").value;
+
+            // Lưu các checkbox đã chọn vào mảng
+            var cafe = [];
+            var taphop = document.querySelectorAll("input[type='checkbox']");
+            taphop.forEach(function(chk) {
+                if (chk.checked) cafe.push(chk.value);
+            });
+
+            // Lấy giá trị radio đã chọn
+            var gtinh;
+            var taphopgt = document.querySelectorAll("input[type='radio']");
+            taphopgt.forEach(function(ra) {
+                if (ra.checked) gtinh = ra.value;
+            });
+
+            // Lưu thông tin vào localStorage
+            localStorage.setItem("us", tendn);
+            localStorage.setItem("pd", mk);
+            localStorage.setItem("cf", cafe);
+            localStorage.setItem("gt", gtinh);
+
+            // Mở trang thông tin
+            window.location.href = "infor.html";
+        }
+    </script>
+</body>
+
+</html>
